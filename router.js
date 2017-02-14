@@ -7,8 +7,7 @@ var fos = {};
  * @param {Object.<string, fos.Router.Route>=} opt_routes
  */
 fos.Router = function(opt_context, opt_routes) {
-    this.context_ = opt_context || {base_url: '', prefix: '', host: '', scheme: ''};
-    this.context_.apiToken = {};
+    this.context_ = opt_context || {base_url: '', prefix: '', host: '', scheme: '', apiToken: {}};
     this.setRoutes(opt_routes || {});
 };
 
@@ -100,6 +99,7 @@ fos.Router.prototype.setApiToken = function(apiTokenValue, apiTokenKey) {
     if (typeof apiTokenKey == 'undefined') {
         apiTokenKey = 'token';
     }
+
     this.context_.apiToken = {};
     this.context_.apiToken[apiTokenKey] = apiTokenValue;
 };
@@ -195,9 +195,9 @@ fos.Router.prototype.generate = function(name, opt_params, absolute) {
         url = '',
         optional = true,
         host = '';
-    
-    if (!_.isEmpty(this._context.apiToken)) {
-        _.assign(params, this._context.apiToken);
+
+    if (!_.isEmpty(this.context_.apiToken)) {
+        _.assign(unusedParams, this.context_.apiToken);
     }
 
     route.tokens.forEach(function(token) {
