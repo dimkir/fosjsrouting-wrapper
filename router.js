@@ -196,6 +196,8 @@ fos.Router.prototype.generate = function(name, opt_params, absolute) {
         optional = true,
         host = '';
 
+    if (typeof absolute == 'undefined') { absolute = true; }
+
     if (!_.isEmpty(this.context_.apiToken)) {
         _.assign(unusedParams, this.context_.apiToken);
     }
