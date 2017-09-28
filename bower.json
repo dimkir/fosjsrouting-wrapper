@@ -1,0 +1,10 @@
+{
+  "name": "fosjsrouting-wrapper",
+  "description": "Front end wrapper for FOSJSTROUTING bundle",
+  "main": "router.js",
+  "authors": [
+    "vladislavs <n4rayane@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/vladislavs/fosjsrouting-wrapper"
+}
